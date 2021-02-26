@@ -88,13 +88,15 @@ async function run() {
       console.log("Pushing to git")
       for (const args of [
         ["add", formulaPath],
-        ["commit", "-m", `"update to ${version}"`],
+        ["commit", "-m", `'update to ${version}'`],
         ["tag", version],
         ["push"],
         ["push", "--tags"],
       ]) {
         console.log(`Running: "git ${args.join(" ")}"`)
-        await execa("git", args, { cwd: brewRepoDir })
+        const {stdout} = await execa("git", args, { cwd: brewRepoDir })
+        console.log(`git return status: ${stdout}`)
+
       }
     }
 
