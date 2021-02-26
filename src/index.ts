@@ -88,7 +88,7 @@ async function run() {
       console.log("Pushing to git")
       for (const args of [
         ["add", formulaPath],
-        ["commit", "-m", `update to ${version}`],
+        ["commit", "-m", `"update to ${version}"`],
         ["tag", version],
         ["push"],
         ["push", "--tags"],
