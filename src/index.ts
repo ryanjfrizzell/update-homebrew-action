@@ -86,6 +86,8 @@ async function run() {
 
 
       console.log("Pushing to git")
+      require('simple-git')().add(formulaPath).commit("update to ${version}").push(['--tags'])
+      /*
       for (const args of [
         ["add", formulaPath],
         ["commit", "-m", `\'update to ${version}\'`],
@@ -98,6 +100,7 @@ async function run() {
         console.log(`git return status: ${stdout}`)
 
       }
+      */
     }
 
   } catch (error) {
