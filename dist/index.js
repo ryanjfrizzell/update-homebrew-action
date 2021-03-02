@@ -46393,26 +46393,8 @@ function run() {
             else {
                 console.log("Writing new formula to " + formulaPath);
                 yield fs_extra_1.writeFile(formulaPath, formula);
-                // This is commented until https://github.com/Homebrew/brew/pull/8589 is merged.
-                // // check if the formula is OK
-                // console.log("Auditing formula")
-                // await execa("brew", ["audit", formulaPath])
                 console.log("commit and push to git");
                 __webpack_require__(1477)().add(formulaPath).commit("update to ${version}").push(['--tags']);
-                /*
-                for (const args of [
-                  ["add", formulaPath],
-                  ["commit", "-m", `\'update to ${version}\'`],
-                  ["tag", version],
-                  ["push"],
-                  ["push", "--tags"],
-                ]) {
-                  console.log(`Running: "git ${args.join(" ")}"`)
-                  const {stdout} = await execa("git", args, { cwd: brewRepoDir })
-                  console.log(`git return status: ${stdout}`)
-          
-                }
-                */
             }
         }
         catch (error) {
