@@ -85,7 +85,7 @@ async function run() {
       // await execa("brew", ["audit", formulaPath])
 
 
-      console.log("Pushing to git")
+      console.log("commit and push to git")
       require('simple-git')().add(formulaPath).commit("update to ${version}").push(['--tags'])
       /*
       for (const args of [
